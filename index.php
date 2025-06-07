@@ -6,22 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Aplikasi Peminjaman</title>
-    <style>
-        body {
-            position: relative;
-            overflow: hidden;
-        }
-
-        video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-        }
-    </style>
 </head>
 
 <body class="h-screen flex items-center justify-center bg-gray-900">

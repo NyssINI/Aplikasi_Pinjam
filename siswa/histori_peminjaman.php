@@ -20,7 +20,6 @@ $result = mysqli_query($conn, $query);
 ?>
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -41,7 +40,6 @@ $result = mysqli_query($conn, $query);
     }
   </style>
 </head>
-
 <body class="bg-gray-100 dark:bg-gray-900 font-serif transition-colors duration-300">
   <h2 class="text-[25px] font-bold text-center my-auto pt-4 text-gray-900 dark:text-gray-100">
     Histori Peminjaman
@@ -49,83 +47,79 @@ $result = mysqli_query($conn, $query);
   <div class="w-full h-[calc(100vh-200px)] rounded-2xl p-6 flex flex-col bg-white dark:bg-gray-800 relative">
     <!-- Filter Form & Tombol Print -->
     <div class="mb-4 flex flex-wrap items-end gap-4 no-print">
-      <form method="post" action="" class="flex flex-wrap items-end gap-4">
-        <div>
+      <form method="post" action="" class="flex flex-wrap items-end gap-4 w-full md:w-auto">
+        <div class="w-full md:w-auto">
           <label class="block font-medium">Pilih Lab:</label>
-          <select name="lab_filter" class="p-2 border rounded-md bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-100">
+          <select name="lab_filter" class="w-full md:w-auto p-2 border rounded-md bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-100">
             <option value="all" <?= ($lab_filter == 'all') ? 'selected' : '' ?>>Semua Lab</option>
             <option value="MM" <?= ($lab_filter == 'MM') ? 'selected' : '' ?>>Lab MM</option>
             <option value="RPL 1" <?= ($lab_filter == 'RPL 1') ? 'selected' : '' ?>>Lab RPL 1</option>
             <option value="RPL 2" <?= ($lab_filter == 'RPL 2') ? 'selected' : '' ?>>Lab RPL 2</option>
           </select>
         </div>
-        <div>
+        <div class="w-full md:w-auto">
           <label class="block font-medium">Pilih Tanggal:</label>
-          <input type="date" name="date_filter" value="<?= htmlspecialchars($date_filter) ?>" class="p-2 border rounded-md bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-100">
+          <input type="date" name="date_filter" value="<?= htmlspecialchars($date_filter) ?>" class="w-full md:w-auto p-2 border rounded-md bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-100">
         </div>
-        <div>
-          <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md">Filter</button>
+        <div class="w-full md:w-auto">
+          <button type="submit" class="w-full md:w-auto bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md">Filter</button>
         </div>
       </form>
-      <div>
-        <button type="button" onclick="printTable()" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md">
+      <div class="w-full md:w-auto">
+        <button type="button" onclick="printTable()" class="w-full md:w-auto bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md">
           <i class="bi bi-printer"></i> Print Tabel
         </button>
       </div>
     </div>
 
-    <button id="burger-btn" class="fixed top-20 left-4 z-30 lg:hidden bg-white dark:bg-gray-800 p-2 rounded shadow-md hidden" onclick="Open()">
-      <i class="bi bi-list text-2xl text-gray-900 dark:text-gray-100"></i>
-    </button>
-
-    <div id="printableTable" class="flex-grow overflow-y-auto">
-      <table class="w-full border-collapse border border-gray-300 dark:border-gray-600">
-        <thead>
-          <tr class="bg-gray-600 dark:bg-gray-700 text-white">
-            <th class="border border-gray-300 dark:border-gray-600 p-2">No</th>
-            <th class="border border-gray-300 dark:border-gray-600 p-2">Nama Peminjam</th>
-            <th class="border border-gray-300 dark:border-gray-600 p-2">Kelas</th>
-            <th class="border border-gray-300 dark:border-gray-600 p-2">Jam Pinjam</th>
-            <th class="border border-gray-300 dark:border-gray-600 p-2">Jam Kembali</th>
-            <th class="border border-gray-300 dark:border-gray-600 p-2">Status</th>
-            <th class="border border-gray-300 dark:border-gray-600 p-2">Nomor Laptop</th>
-            <th class="border border-gray-300 dark:border-gray-600 p-2">Nama Barang</th>
-            <th class="border border-gray-300 dark:border-gray-600 p-2 w-[80px]">Lab</th>
+    <div id="printableTable" class="overflow-x-auto">
+  <table class="w-full table-fixed border-collapse border border-gray-300 dark:border-gray-600">
+    <thead>
+      <tr class="bg-gray-600 dark:bg-gray-700 text-white">
+        <th class="border border-gray-300 dark:border-gray-600 p-2 break-words w-1/12">No</th>
+        <th class="border border-gray-300 dark:border-gray-600 p-2 break-words w-2/12">Nama Peminjam</th>
+        <th class="border border-gray-300 dark:border-gray-600 p-2 break-words w-2/12">Kelas</th>
+        <th class="border border-gray-300 dark:border-gray-600 p-2 break-words w-2/12">Jam Pinjam</th>
+        <th class="border border-gray-300 dark:border-gray-600 p-2 break-words w-2/12">Jam Kembali</th>
+        <th class="border border-gray-300 dark:border-gray-600 p-2 break-words w-2/12">Status</th>
+        <th class="border border-gray-300 dark:border-gray-600 p-2 break-words w-2/12">Nomor Laptop</th>
+        <th class="border border-gray-300 dark:border-gray-600 p-2 break-words w-2/12">Nama Barang</th>
+        <th class="border border-gray-300 dark:border-gray-600 p-2 break-words w-1/12">Lab</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php if (mysqli_num_rows($result) > 0): ?>
+        <?php $no = 1; ?>
+        <?php while ($row = mysqli_fetch_assoc($result)): ?>
+          <?php
+          if ($row['lab'] == 'MM') {
+            $row['nomor_laptop'] = '-';
+          } elseif ($row['lab'] == 'RPL 1' || $row['lab'] == 'RPL 2') {
+            $row['nama_barang'] = '-';
+          }
+          ?>
+          <tr class="text-center hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+            <td class="border border-gray-300 dark:border-gray-600 p-2 break-words"><?= $no++ ?></td>
+            <td class="border border-gray-300 dark:border-gray-600 p-2 break-words"><?= htmlspecialchars($row['nama_peminjam']) ?></td>
+            <td class="border border-gray-300 dark:border-gray-600 p-2 break-words"><?= htmlspecialchars($row['kelas']) ?></td>
+            <td class="border border-gray-300 dark:border-gray-600 p-2 break-words"><?= htmlspecialchars($row['jam_pinjam']) ?></td>
+            <td class="border border-gray-300 dark:border-gray-600 p-2 break-words"><?= htmlspecialchars($row['jam_kembali']) ?></td>
+            <td class="border border-gray-300 dark:border-gray-600 p-2 break-words"><?= htmlspecialchars($row['status']) ?></td>
+            <td class="border border-gray-300 dark:border-gray-600 p-2 break-words"><?= htmlspecialchars($row['nomor_laptop']) ?></td>
+            <td class="border border-gray-300 dark:border-gray-600 p-2 break-words"><?= htmlspecialchars($row['nama_barang']) ?></td>
+            <td class="border border-gray-300 dark:border-gray-600 p-2 break-words"><?= htmlspecialchars($row['lab']) ?></td>
           </tr>
-        </thead>
-        <tbody>
-          <?php if (mysqli_num_rows($result) > 0): ?>
-            <?php $no = 1; ?>
-            <?php while ($row = mysqli_fetch_assoc($result)): ?>
-              <?php
-              if ($row['lab'] == 'MM') {
-                $row['nomor_laptop'] = '-';
-              } elseif ($row['lab'] == 'RPL 1' || $row['lab'] == 'RPL 2') {
-                $row['nama_barang'] = '-';
-              }
-              ?>
-              <tr class="text-center hover:bg-gray-200 dark:hover:bg-gray-700 transition">
-                <td class="border border-gray-300 dark:border-gray-600 p-2"><?= $no++ ?></td>
-                <td class="border border-gray-300 dark:border-gray-600 p-2"><?= htmlspecialchars($row['nama_peminjam']) ?></td>
-                <td class="border border-gray-300 dark:border-gray-600 p-2"><?= htmlspecialchars($row['kelas']) ?></td>
-                <td class="border border-gray-300 dark:border-gray-600 p-2"><?= htmlspecialchars($row['jam_pinjam']) ?></td>
-                <td class="border border-gray-300 dark:border-gray-600 p-2"><?= htmlspecialchars($row['jam_kembali']) ?></td>
-                <td class="border border-gray-300 dark:border-gray-600 p-2"><?= htmlspecialchars($row['status']) ?></td>
-                <td class="border border-gray-300 dark:border-gray-600 p-2"><?= htmlspecialchars($row['nomor_laptop']) ?></td>
-                <td class="border border-gray-300 dark:border-gray-600 p-2"><?= htmlspecialchars($row['nama_barang']) ?></td>
-                <td class="border border-gray-300 dark:border-gray-600 p-2"><?= htmlspecialchars($row['lab']) ?></td>
-              </tr>
-            <?php endwhile; ?>
-          <?php else: ?>
-            <tr>
-              <td colspan="9" class="text-center py-4">Tidak ada data histori peminjaman untuk filter yang dipilih.</td>
-            </tr>
-          <?php endif; ?>
-        </tbody>
-      </table>
-    </div>
-  </div>
+        <?php endwhile; ?>
+      <?php else: ?>
+        <tr>
+          <td colspan="9" class="text-center py-4">Tidak ada data histori peminjaman untuk filter yang dipilih.</td>
+        </tr>
+      <?php endif; ?>
+    </tbody>
+  </table>
+</div>
 
+  <!-- Script untuk Print dan Sidebar -->
   <script>
     function printTable() {
       var tableContent = document.getElementById("printableTable").innerHTML;
@@ -146,7 +140,6 @@ $result = mysqli_query($conn, $query);
       let sidebar = document.querySelector('.sidebar');
       sidebar.classList.remove('-left-72');
       sidebar.classList.add('left-0');
-      // Sembunyikan burger button saat sidebar terbuka
       document.getElementById('burger-btn').classList.add('hidden');
     }
 

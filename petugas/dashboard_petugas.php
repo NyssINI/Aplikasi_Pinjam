@@ -10,6 +10,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== "Petugas") {
 ?>
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,6 +29,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== "Petugas") {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 </head>
 <!-- Nav -->
+
 <body class="bg-gray-100 dark:bg-gray-900 h-screen overflow-auto transition-colors duration-300 font-serif: var(--Georgia)">
     <nav class="bg-white dark:bg-gray-800 shadow-md fixed w-full z-20">
         <div class="max-w-7xl mx-auto px-4">
@@ -60,6 +62,12 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== "Petugas") {
                 <div class="py-2.5 mt-3 flex items-center rounded-md px-4 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700">
                     <i class="bi bi-archive text-gray-700 dark:text-gray-300"></i>
                     <span class="text-[18px] ml-4">Barang Dipinjam</span>
+                </div>
+            </a>
+            <a href="?page=kelola_users" class="block">
+                <div class="py-2.5 mt-3 flex items-center rounded-md px-4 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700">
+                    <i class="bi bi-person-plus text-gray-700 dark:text-gray-300"></i>
+                    <span class="text-[18px] ml-4">Kelola Users</span>
                 </div>
             </a>
             <hr class="border-gray-300 dark:border-gray-600 my-2">
@@ -174,6 +182,9 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== "Petugas") {
                             break;
                         case 'pinjam_labmm':
                             include "../petugas/Lab_MM/pinjam_mm.php";
+                            break;
+                        case 'kelola_users':
+                            include "../petugas/kelola_users.php";
                             break;
                         case 'histori_peminjaman':
                             include "../siswa/histori_peminjaman.php";

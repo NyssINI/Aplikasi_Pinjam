@@ -10,9 +10,7 @@ $query = mysqli_query($conn, "SELECT * FROM users WHERE username='$username'");
 $data  = mysqli_fetch_assoc($query);
 
 if ($data) {
-    // Jika user sudah ada, cek role
     if ($data['role'] == 'admin' || $data['role'] == 'petugas') {
-        // Untuk admin dan petugas, gunakan verifikasi password
         if (password_verify($credential, $data['password'])) {
             $_SESSION['username'] = $username;
             $_SESSION['role']     = ucfirst($data['role']);
